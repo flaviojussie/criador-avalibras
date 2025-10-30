@@ -1,8 +1,8 @@
-# Documento de Design Detalhado (DDD): Módulo de Edição de Vídeo v2.0.0
+# Documento de Design Detalhado (DDD): Módulo de Edição de Vídeo (Versão Beta)
 
 ## 1. Introdução
 
-Este documento detalha o design do módulo de edição de vídeo do **Criador AvaLIBRAS v2.0.0**, com foco nas funcionalidades de corte de vídeo e gerenciamento de overlays. O objetivo é fornecer uma compreensão aprofundada da implementação, interações entre componentes e considerações técnicas para manutenção e futuras expansões.
+Este documento detalha o design do módulo de edição de vídeo do **Criador AvaLIBRAS (Versão Beta)**, com foco nas funcionalidades de corte de vídeo e gerenciamento de overlays. O objetivo é fornecer uma compreensão aprofundada da implementação, interações entre componentes e considerações técnicas para manutenção e futuras expansões.
 
 **⚠️ AVISO**: Este documento cobre apenas o **Criador AvaLIBRAS** (editor). O **Aplicador AvaLIBRAS** (player para estudantes) ainda não foi implementado e está planejado para desenvolvimento futuro.
 
@@ -304,6 +304,6 @@ O sistema utiliza uma arquitetura de estados centralizada com hooks personalizad
 
 ---
 
-*Versão: 2.0.0*
+*Versão: Beta*
 *Última atualização: Outubro 2025*
 *Aplicação: AvaLIBRAS*

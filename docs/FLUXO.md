@@ -1,4 +1,4 @@
-# Fluxo de Uso do Criador AvaLIBRAS v2.0.0
+# Fluxo de Uso do Criador AvaLIBRAS (Versão Beta)
 
 Este documento descreve em detalhes os fluxos de uso do **Criador AvaLIBRAS** (para criação de videoprovas). O documento é direcionado tanto para usuários finais quanto para desenvolvedores que precisam entender os workflows completos da aplicação.
 
@@ -649,6 +649,6 @@ Erro de Reprodução:
 
 ---
 
-*Versão: 2.0.0*
+*Versão: Beta*
 *Última atualização: Outubro 2025*
 *Aplicação: AvaLIBRAS*

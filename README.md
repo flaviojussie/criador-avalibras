@@ -1,9 +1,9 @@
-# Criador AvaLIBRAS v2.0.0
+# Criador AvaLIBRAS (Versão Beta)
 
 **O Editor de Videoprovas Acessíveis em Língua Brasileira de Sinais (LIBRAS)**
 
 [![Status do Projeto](https://img.shields.io/badge/status-funcional-success)](./docs/PROJECT_STATUS.md)
-[![Versão](https://img.shields.io/badge/version-2.0.0-blue)](package.json)
+[![Versão](https://img.shields.io/badge/version-Beta-blue)](package.json)
 [![Plataformas](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)](./docs/INSTALLATION_GUIDE.md)
 
 O Criador AvaLIBRAS é uma aplicação de desktop gratuita e de código aberto, projetada para ser a ferramenta definitiva na criação de video-provas em LIBRAS. Ele simplifica o processo ao integrar um editor de vídeo com funcionalidades específicas para o contexto educacional, permitindo que professores, sem necessidade de conhecimento técnico avançado, criem, editem e distribuam avaliações acessíveis de forma rápida e eficiente.
@@ -64,8 +64,8 @@ Interessado em contribuir? Ótimo! Siga os passos abaixo para configurar o ambie
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/seu-usuario/avalibras-editor.git
-    cd avalibras-editor
+    git clone https://github.com/flaviojussie/criador-avalibras.git
+    cd criador-avalibras
     ```
 
 2.  **Instale as dependências:**
@@ -93,16 +93,32 @@ Para mais detalhes, consulte o **[Guia de Instalação para Desenvolvedores](./d
 
 ## 🗺️ Roadmap
 
-- [x] Implementação completa do **Criador AvaLIBRAS**.
-- [ ] Correção de bugs e melhorias de performance.
-- [ ] Implementação da suíte de testes automatizados.
-- [ ] Desenvolvimento do **Aplicador AvaLIBRAS**.
+- [x] Lançamento da **Versão Beta** do Criador AvaLIBRAS.
+- [ ] Coletar feedback do público final para melhorias.
+- [ ] Implementar suíte de testes automatizados para garantir estabilidade.
+- [ ] Lançamento da Versão 1.0 (estável).
+- [ ] Iniciar o desenvolvimento do **Aplicador AvaLIBRAS**.
 
 ---
 
 ## 📄 Licença
 
 Este projeto é distribuído como software de código aberto.
+
+---
+
+## 🤝 Atribuição e Contribuição (Forking Policy)
+
+Este projeto, **Criador AvaLIBRAS**, é um trabalho de pesquisa e desenvolvimento resultante da dissertação de Mestrado Profissional em Tecnologia Educacional de Flávio Jussiê Ribeiro Fernandes. Como tal, a integridade da atribuição autoral é de suma importância.
+
+Desenvolvedores que optarem por realizar um *fork* deste repositório para desenvolvimento, adaptação ou distribuição de versões derivadas são **mandatoriamente requeridos** a manter uma clara e explícita atribuição ao desenvolvedor original, Flávio Jussiê Ribeiro Fernandes, e à origem acadêmica do projeto (Universidade Federal do Ceará - UFC).
+
+Esta atribuição deve ser visível em:
+*   A documentação principal do *fork* (e.g., `README.md`).
+*   Qualquer interface de usuário ou tela "Sobre" da aplicação derivada.
+*   Metadados do projeto e arquivos de licenciamento.
+
+A modificação, distribuição e uso são encorajados sob os termos da licença de código aberto aplicável, contanto que a atribuição original seja sempre preservada e destacada. O não cumprimento desta política de atribuição constitui uma violação dos princípios de autoria acadêmica e de código aberto.
 
 ---
 

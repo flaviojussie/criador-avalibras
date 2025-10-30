@@ -1,170 +1,57 @@
-# Status do Projeto AvaLIBRAS v2.0.0
+# Status do Projeto AvaLIBRAS (Versão Beta)
 
 ## 📋 Visão Geral
 
-O projeto AvaLIBRAS v2.0.0 consiste em duas aplicações planejadas:
+O projeto AvaLIBRAS entra em sua fase de **distribuição experimental (Beta)** com o lançamento do **Criador AvaLIBRAS**. O objetivo desta fase é coletar feedback do público final para aprimorar a ferramenta antes do lançamento da versão estável (1.0).
 
-### ✅ **Criador AvaLIBRAS** (IMPLEMENTADO)
-- **Função**: Editor de videoprovas para professores e intérpretes
-- **Status**: **Concluído e funcional**
-- **Tecnologia**: Electron + React + FFmpeg
-- **Plataformas**: Windows e Linux
+### ✅ **Criador AvaLIBRAS** (Disponível em Versão Beta)
+- **Função**: Editor de videoprovas para professores e intérpretes.
+- **Status**: **Funcional e pronto para testes com usuários.**
+- **Tecnologia**: Electron + React + FFmpeg.
+- **Plataformas**: Windows e Linux.
 
-### ⏳ **Aplicador AvaLIBRAS** (NÃO IMPLEMENTADO)
-- **Função**: Player para estudantes realizarem as provas
-- **Status**: **Planejado para desenvolvimento futuro**
-- **Descrição**: Aplicação desktop para importar e executar provas `.ava`
+### ⏳ **Aplicador AvaLIBRAS** (Não Implementado)
+- **Função**: Player para estudantes realizarem as provas.
+- **Status**: **Planejado para desenvolvimento após a versão 1.0 do Criador.**
 
-## 📊 Funcionalidades Implementadas
+## 📊 Funcionalidades da Versão Beta
 
-### Criador AvaLIBRAS ✅
+O **Criador AvaLIBRAS** em sua versão Beta inclui as seguintes funcionalidades prontas para uso:
 
 #### ✅ **Funcionalidades Principais**
-- [x] Gestão completa de projetos (criar, salvar, carregar, formato `.avaprojet`)
-- [x] Edição de vídeo com timeline interativa
-- [x] Sistema de marcadores para alternativas (A, B, C, D, E)
-- [x] Corte de vídeo com FFmpeg (background processing)
-- [x] Sistema de overlays (imagens sobre vídeo)
-- [x] Configuração de gabarito
-- [x] Exportação para formato `.ava` (com nível de compressão configurável)
-- [x] Importação de questão individual (.avaquest)
-- [x] Interface drag & drop para questões
-- [x] Reordenação de questões (drag & drop)
-- [x] Menu de contexto para questões (Editar, Mover, Exportar, Excluir)
-- [x] Atalhos de teclado
-- [x] Menus nativos do sistema
-- [x] Associação de arquivos `.avaprojet`
+- [x] Gestão completa de projetos (criar, salvar, carregar, formato `.avaprojet`).
+- [x] Edição de vídeo com timeline interativa.
+- [x] Sistema de marcadores para alternativas (A, B, C, D, E).
+- [x] Corte de vídeo com FFmpeg (em background).
+- [x] Sistema de overlays de imagem sobre o vídeo.
+- [x] Configuração de gabarito para as questões.
+- [x] Exportação para formato `.ava` (com nível de compressão e senha).
+- [x] Importação e exportação de questões individuais (`.avaquest`).
+- [x] Reordenação de questões na interface (arrastar e soltar).
+- [x] Menu de contexto para gerenciamento rápido de questões.
+- [x] Atalhos de teclado para as principais ações.
+- [x] Associação de arquivos (`.avaprojet`, `.ava`, `.avaquest`).
 
-#### ✅ **Funcionalidades Técnicas**
-- [x] Arquitetura Electron + React
-- [x] Comunicação IPC segura
-- [x] Worker threads para processamento FFmpeg
-- [x] Servidor HTTP para streaming de vídeo
-- [x] Canvas API para overlays em tempo real
-- [x] Sistema de hooks personalizados
-- [x] Cache inteligente de APIs
-- [x] Tratamento robusto de erros
+## 🎯 Próximos Passos
 
-#### ⚠️ **Funcionalidades Pendentes (Baixa Prioridade)**
-- [ ] Integração completa de configurações do SettingsModal
-- [ ] Backup automático na nuvem
+### 1. **Curto Prazo (Pós-Beta)**
+- [ ] Analisar o feedback dos usuários da versão Beta.
+- [ ] Corrigir bugs reportados pela comunidade.
+- [ ] Implementar uma suíte de testes automatizados para aumentar a estabilidade.
+- [ ] Finalizar a integração das configurações do `SettingsModal` com o backend.
 
-### Aplicador AvaLIBRAS ❌
+### 2. **Médio Prazo (Rumo à Versão 1.0)**
+- [ ] Lançar a versão 1.0 estável do **Criador AvaLIBRAS**.
+- [ ] Otimizar a performance com vídeos muito grandes ou projetos com muitas questões.
 
-#### ❌ **Funcionalidades Não Implementadas**
-- [ ] Importação de provas `.ava`
-- [ ] Navegação entre questões
-- [ ] Reprodução de vídeo com controles
-- [ ] Navegação por alternativas
-- [ ] Interface responsiva
-- [ ] Recursos de acessibilidade
-- [ ] Modo tela cheia
-- [ ] Controles de velocidade e volume
+### 3. **Longo Prazo (Expansão do Ecossistema)**
+- [ ] Iniciar o design e desenvolvimento do **Aplicador AvaLIBRAS**.
+- [ ] Unificar a documentação para ambas as aplicações.
 
-## 🏗️ Arquitetura Atual
+## 📞 Contato e Feedback
 
-### Estrutura do Criador AvaLIBRAS
-```
-src/
-├── App.jsx                 # Aplicação principal
-├── components/
-│   ├── Editor.jsx          # Editor principal
-│   ├── Timeline.jsx        # Timeline interativa
-│   ├── Sidebar.jsx         # Sidebar com questões
-│   ├── VideoControls.jsx   # Controles de vídeo
-│   ├── SettingsModal.jsx   # Modal de Configurações
-│   └── QuestionContextMenu.jsx # Menu de Contexto para Questões
-├── hooks/
-│   ├── useQuestions.js     # Gestão de projetos/questões
-│   ├── useVideoEditor.js   # Editor de vídeo
-│   └── useOverlay.js       # Sistema de overlays
-├── utils/
-│   ├── apiService.js       # Abstração de APIs
-│   └── errorHandler.js     # Sistema de erros
-└── styles/
-    └── global.css         # Estilos globais
-
-electron/
-├── main.js                # Processo principal
-├── preload.js             # Ponte segura IPC
-└── worker.js              # Worker FFmpeg
-```
-
-## 📋 Próximos Passos Recomendados
-
-### 1. **Curto Prazo (Correções)**
-- [x] Corrigir documentação para refletir status real
-- [x] Adicionar avisos claros em toda documentação
-- [x] Atualizar site.md com informações corretas
-
-### 2. **Médio Prazo (Melhorias no Criador)**
-- [x] Implementar funcionalidades pendentes (Configurações, Reordenação de Questões)
-- [ ] Melhorar performance para vídeos grandes
-- [ ] Adicionar suíte de testes automatizada
-- [ ] Otimizar interface responsiva
-
-### 3. **Longo Prazo (Desenvolvimento do Aplicador)**
-- [ ] Criar repositório separado ou branch para Aplicador
-- [ ] Definir arquitetura do Aplicador
-- [ ] Implementar player de vídeo básico
-- [ ] Implementar sistema de navegação
-- [ ] Adicionar recursos de acessibilidade
-- [ ] Testes de integração entre Criador e Aplicador
-
-## 📊 Métricas Atuais
-
-### Código
-- **Total de arquivos JS/JSX**: 35
-- **Total de linhas de código**: ~11.898
-- **Cobertura de testes**: Planejada
-- **Documentação**: Completa e atualizada
-
-### Funcionalidade
-- **Recursos implementados**: ~95%
-- **Funcionalidades críticas**: 100% funcionais
-- **Performance**: Adequada para uso normal
-- **Estabilidade**: Estável para produção
-
-## 🎯 Decisões Arquitetônicas Importantes
-
-### Por que Apenas o Criador Foi Implementado?
-
-1. **Foco no MVP**: Priorizar criação de conteúdo sobre consumo
-2. **Complexidade Técnica**: O editor tem funcionalidades mais complexas (FFmpeg, timeline, overlays, reordenação de questões)
-3. **Validação do Conceito**: Validar se professores conseguem criar provas efetivamente
-4. **Recursos Limitados**: Foco em uma aplicação de alta qualidade
-
-### Por que Separar as Aplicações?
-
-1. **Independência**: Professores e estudantes usam em momentos diferentes
-2. **Performance**: Cada aplicação pode ser otimizada para seu caso de uso específico
-3. **Manutenção**: Menor complexidade em manter duas aplicações especializadas
-4. **Deploy**: Distribuição independente das aplicações
-
-## 🚀 Roadmap Futuro
-
-### Versão 2.1 (Melhorias no Criador)
-- [x] Sistema de configurações avançadas
-- [x] Melhorias na UI/UX (Menu de contexto, reordenação de questões)
-- [ ] Suíte de testes completa
-- [ ] Performance optimizations
-
-### Versão 3.0 (Aplicador AvaLIBRAS)
-- Implementação completa do Aplicador
-- Testes de integração end-to-end
-- Deploy multiplataforma completo
-- Documentação unificada
-
-## 📞 Contato e Suporte
-
-Para dúvidas sobre o status do projeto ou contribuições:
-
-- **Documentação técnica**: `docs/MANUAL_TECNICO_AVALIBRAS.md`
-- **Guia de instalação**: `docs/INSTALLATION_GUIDE.md`
-- **Issues**: GitHub Issues do repositório
+Para reportar bugs, sugerir melhorias ou enviar seu feedback sobre a versão Beta, por favor, utilize a seção "Issues" do nosso repositório no GitHub.
 
 ---
-
 *Última atualização: Outubro 2025*
-*Versão: 2.0.0*
-*Status: Criador implementado, Aplicador planejado*
+*Versão: Beta*

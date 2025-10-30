@@ -1,4 +1,4 @@
-# 📖 Manual do Usuário - Criador AvaLIBRAS v2.0.0
+# 📖 Manual do Usuário - Criador AvaLIBRAS (Versão Beta)
 
 Bem-vindo ao **Criador AvaLIBRAS**, a ferramenta definitiva para professores e intérpretes criarem videoprovas acessíveis em Língua Brasileira de Sinais (LIBRAS). Este manual irá guiá-lo através de todas as funcionalidades da aplicação, desde a instalação até a exportação de suas provas.
 

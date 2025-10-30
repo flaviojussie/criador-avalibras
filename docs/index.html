@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvaLIBRAS - Sistema de Videoprovas em Libras</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #06437e; /* Cor primária */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #043360; /* Cor primária mais escura */
+        }
+        .content-section h2 {
+            border-bottom: 2px solid #06437e; /* Cor primária */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .content-section h3 {
+            border-bottom: 1px solid #45a2de; /* Cor secundária */
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+        .keyword-tag {
+            background-color: #e0f2fe; /* Azul claro Tailwind (sky-100) */
+            color: #06437e; /* Cor primária */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px; /* pill shape */
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .download-button {
+            background-color: #06437e; /* Cor primária */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem; /* rounded-md */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .download-button:hover {
+            background-color: #043360; /* Cor primária mais escura */
+        }
+        .citation {
+            font-size: 0.75rem;
+            color: #6b7280; /* gray-500 */
+            margin-left: 0.25rem;
+        }
+        /* Estilo para a navegação lateral */
+        #TableOfContents {
+            position: sticky;
+            top: 2rem; /* Ajuste conforme necessário */
+            max-height: calc(100vh - 4rem); /* Altura máxima para evitar que ultrapasse a tela */
+            overflow-y: auto;
+        }
+        #TableOfContents ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #TableOfContents li a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #374151; /* gray-700 */
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease-in-out;
+        }
+        #TableOfContents li a:hover,
+        #TableOfContents li a.active {
+            color: #06437e; /* Cor primária */
+            background-color: #e0f2fe; /* Azul claro Tailwind (sky-100) */
+            border-left-color: #06437e; /* Cor primária */
+            font-weight: 500;
+        }
+        /* Estilo para o botão "Voltar ao Topo" */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #06437e;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* Oculto por padrão */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        #scrollToTopBtn:hover {
+            background-color: #043360;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 leading-relaxed">
+
+    <header class="bg-gradient-to-r from-[#06437e] to-[#45a2de] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold text-center">
+                AvaLIBRAS: <br class="sm:hidden"> Sistema de Videoprovas em Libras para a Educação Básica
+            </h1>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <aside class="lg:w-1/4 xl:w-1/5">
+            <nav id="TableOfContents" class="bg-white p-4 rounded-lg shadow">
+                <h3 class="text-lg font-semibold text-[#06437e] mb-3">Conteúdo</h3>
+                <ul>
+                    <li><a href="#sobre-projeto">Sobre o Projeto</a></li>
+                    <li><a href="#sistema-videoprovas">O Sistema de Videoprovas</a>
+                        <ul>
+                            <li><a href="#software-criacao" class="pl-8">Software de Criação</a></li>
+                            <li><a href="#software-aplicacao" class="pl-8">Software de Aplicação</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contribuicoes">Contribuições e Impacto</a></li>
+                    <li><a href="#autor">Autor</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="lg:w-3/4 xl:w-4/5 space-y-8">
+            <section id="sobre-projeto" class="content-section bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-[#06437e] mb-3">Sobre o Projeto</h2>
+                <p class="mb-3 text-sm">
+                    Este projeto de produto educacional, <strong>disponível em sua versão Beta e como parte central da dissertação</strong> de Mestrado Profissional em Tecnologia Educacional da Universidade Federal do Ceará (UFC), aborda a busca por uma avaliação justa e inclusiva para estudantes surdos na educação básica. A pesquisa se concentra na escassez de ferramentas avaliativas que respeitem a Língua Brasileira de Sinais (Libras), a língua natural desses estudantes.
+                </p>
+                <p class="mb-3 text-sm">
+                    O objetivo principal é desenvolver e avaliar um sistema de videoprovas que ofereça acesso às questões tanto na versão escrita tradicional quanto em Libras, promovendo acessibilidade, inclusão e equidade na avaliação da aprendizagem. A investigação explora o contexto histórico e legal da educação de surdos, a importância da Libras e o potencial das tecnologias assistivas. Espera-se que este trabalho contribua com subsídios teóricos e práticos para políticas e práticas pedagógicas inclusivas, resultando em um software acessível e eficaz para a avaliação em Libras.
+                </p>
+                <div>
+                    <strong class="font-semibold">Palavras-chave:</strong>
+                    <span class="keyword-tag">Avaliação educacional</span>
+                    <span class="keyword-tag">Estudantes surdos</span>
+                    <span class="keyword-tag">Libras</span>
+                    <span class="keyword-tag">Videoprovas</span>
+                    <span class="keyword-tag">Inclusão</span>
+                </div>
+            </section>
+
+            <section id="sistema-videoprovas" class="content-section bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-[#06437e] mb-3">O Sistema de Videoprovas em Libras</h2>
+                <p class="mb-4 text-sm">
+                    O projeto resultou no desenvolvimento de um sistema composto por dois softwares principais: um para a <strong>criação</strong> de videoprovas e outro para a <strong>aplicação</strong> dessas provas aos estudantes. Esta inovação visa promover a equidade na avaliação, empoderando professores, intérpretes e, principalmente, os estudantes surdos.
+                </p>
+
+                <article id="software-criacao" class="mb-6">
+                    <h3 class="text-lg font-semibold text-[#06437e] mb-2">1. Criador AvaLIBRAS (Software de Criação de Videoprovas)</h3>
+                    <p class="mb-3 text-sm">
+                        O "Criador AvaLIBRAS" é uma aplicação desktop desenvolvida para empoderar professores e intérpretes na elaboração de videoprovas em Libras. Ele oferece um ambiente completo para gerenciar projetos de provas, adicionar questões, manipular vídeos, adicionar overlays de imagem e definir os marcadores temporais para as alternativas, culminando na exportação de provas prontas para aplicação.
+                    </p>
+                    
+                    <h4 class="text-base font-medium text-gray-700 mt-3 mb-1">Principais Características e Funcionalidades:</h4>
+                    <ul class="list-disc list-inside space-y-0.5 mb-3 pl-4 text-gray-700 text-sm">
+                        <li><strong>Gerenciamento de Projetos de Prova:</strong> Nomeação, salvar/importar projeto (`.avaproject`), exportar prova final (`.ava`) com opção de proteção por senha.</li>
+                        <li><strong>Gerenciamento de Questões:</strong> Adicionar, editar, excluir, reordenar (arrastar e soltar), visualizar e exportar questões individualmente.</li>
+                        <li><strong>Manuseio de Vídeo por Questão:</strong> Upload (MP4), gravação via webcam, player integrado com controles avançados.</li>
+                        <li><strong>Marcação Temporal Precisa:</strong> Definição de marcadores temporais para alternativas (A-E) com tooltips e feedback visual automático da seção (Enunciado, Item A, etc.) durante a marcação.</li>
+                        <li><strong>Edição de Vídeo Destrutiva (com FFmpeg):</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Remoção precisa de trechos indesejados do vídeo.</li>
+                                <!-- <li>União simplificada de múltiplos vídeos (se aplicável como funcionalidade direta ao usuário).</li> -->
+                            </ul>
+                        </li>
+                        <li><strong>Recursos de Overlay de Imagem (Não Destrutivo via Canvas):</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Adicionar imagens (PNG, JPG, etc.) sobrepostas ao vídeo da questão.</li>
+                                <li>Configurar tempo de início, duração, posição (superior, inferior, centro, etc.), tamanho (relativo à largura do vídeo) e opacidade do overlay.</li>
+                                <li>Preview da imagem selecionada e ajustes em tempo real no editor.</li>
+                                <li>Overlays são aplicados de forma não destrutiva, preservando o vídeo original durante a edição.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Interface e Usabilidade:</strong> Interface gráfica intuitiva, notificações visuais para feedback ao usuário, diálogos de progresso para operações longas (exportação, extração), atalhos de teclado.</li>
+                        <li><strong>Registro de Erros:</strong> Sistema interno para registrar erros e facilitar a depuração.</li>
+                    </ul>
+
+                    <h4 class="text-base font-medium text-gray-700 mt-3 mb-1">Utilização do Criador AvaLIBRAS:</h4>
+                    <ol class="list-decimal list-inside space-y-0.5 mb-3 pl-4 text-gray-700 text-sm">
+                        <li><strong>Iniciar um Novo Projeto:</strong> Abrir o software, nomear a prova e aplicar.</li>
+                        <li><strong>Adicionar Questões:</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Carregar um vídeo existente (MP4) ou gravar um novo vídeo utilizando a webcam.</li>
+                                <li>Definir os marcadores temporais para o enunciado (início do vídeo) e para cada alternativa (A, B, C, D, E) utilizando o player.</li>
+                                <li>Opcionalmente, adicionar e configurar um overlay de imagem sobre o vídeo, ajustando sua aparência e tempo de exibição.</li>
+                                <li>Opcionalmente, realizar edições destrutivas no vídeo, como remover trechos indesejados.</li>
+                                <li>Adicionar a questão configurada ao projeto da prova.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Gerenciar Questões:</strong> Visualizar as questões adicionadas na lista lateral. Selecionar uma questão para visualização, ou realizar um duplo clique para entrar no modo de edição (permitindo alterar vídeo, marcadores e overlay). Reordenar as questões arrastando-as na lista.</li>
+                        <li><strong>Salvar e Exportar:</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Salvar o projeto atual no formato `.avaproject` a qualquer momento para continuar a edição posteriormente.</li>
+                                <li>Exportar a prova finalizada no formato `.ava`. Durante a exportação, é possível definir uma senha para proteger o arquivo da prova.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <a href="#" class="download-button mt-4">
+                        <i class="fas fa-download"></i> Baixar Criador AvaLIBRAS (Beta)
+                    </a>
+                    <p class="text-sm text-gray-500 mt-1">Disponível para Windows e Linux. Teste agora!</p>
+                </article>
+
+                <article id="software-aplicacao">
+                    <h3 class="text-lg font-semibold text-[#06437e] mb-2">2. Aplicador AvaLIBRAS (Software de Aplicação de Videoprovas)</h3>
+                    <p class="mb-3 text-sm">
+                        Este software, denominado "Aplicador AvaLIBRAS" ou "Plataforma AvaLIBRAS - Módulo de Aplicação", é a interface utilizada pelos estudantes para realizar as videoprovas. Ele foi projetado com foco na acessibilidade e usabilidade para estudantes surdos, permitindo que interajam com as questões da prova de forma intuitiva e segura.
+                    </p>
+
+                    <h4 class="text-base font-medium text-gray-700 mt-3 mb-1">Principais Características e Funcionalidades:</h4>
+                    <ul class="list-disc list-inside space-y-0.5 mb-3 pl-4 text-gray-700 text-sm">
+                        <li><strong>Interface Dedicada e Segura:</strong> Aplicação desktop (Electron) para um ambiente focado na avaliação, minimizando distrações.</li>
+                        <li><strong>Importação de Provas:</strong> Carrega provas no formato `.ava`.
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Suporte para arquivos de prova protegidos por senha, solicitando a senha ao usuário quando necessário.</li>
+                                <li>Exibição de diálogos de progresso durante a extração e carregamento dos arquivos da prova.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Visualização Integrada e Acessível:</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Vídeo em Libras em destaque centralizado na tela.</li>
+                                <li>Menu lateral para navegação clara entre as questões da prova.</li>
+                                <li>Exibição de overlays de imagem sobre o vídeo, conforme configurados pelo professor/intérprete no Criador AvaLIBRAS, para fornecer contexto visual adicional.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Controles de Vídeo Acessíveis:</strong> Player de vídeo customizado com funcionalidades essenciais:
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Play/Pause, barra de progresso, exibição de tempo atual e duração total.</li>
+                                <li>Controle de volume e opção de tela cheia.</li>
+                                <li>Botões de navegação específicos da questão: "INÍCIO" (para o enunciado) e botões para cada "ALTERNATIVA" (A-E), permitindo ao estudante pular diretamente para os trechos relevantes do vídeo.</li>
+                                <li>Controle de velocidade de reprodução (0.5x, 1x, 2x) para adaptar ao ritmo do estudante.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Feedback Visual em Tempo Real:</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Notificações visuais na tela indicam a seção atual do vídeo que está sendo reproduzida (ex: "ENUNCIADO", "ITEM A").</li>
+                                <li>Feedback visual da velocidade de reprodução selecionada.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Navegação Intuitiva entre Questões:</strong> Seleção direta da questão desejada através do menu lateral.</li>
+                        <li><strong>Atalhos de Teclado:</strong> Comandos via teclado para controle do aplicativo e do player de vídeo, facilitando a interação.</li>
+                        <li><strong>Gerenciamento de Arquivos Temporários:</strong> Limpeza automática dos arquivos temporários da prova após o uso, garantindo a privacidade e o bom funcionamento do sistema.</li>
+                        <li><strong>Notificações ao Usuário:</strong> Mensagens e alertas informativos sobre o status da aplicação e possíveis erros.</li>
+                    </ul>
+
+                    <h4 class="text-lg font-medium text-gray-700 mt-4 mb-2">Utilização do Aplicador AvaLIBRAS:</h4>
+                    <ol class="list-decimal list-inside space-y-1 mb-4 pl-4 text-gray-700">
+                        <li><strong>Abrir o Software:</strong> Iniciar o aplicativo "Aplicador AvaLIBRAS".</li>
+                        <li><strong>Importar Prova:</strong> Clicar no botão "IMPORTAR PROVA" e selecionar o arquivo `.ava` desejado. Se a prova estiver protegida por senha, uma caixa de diálogo solicitará que o usuário a insira para continuar. Um diálogo de progresso será exibido durante o carregamento.</li>
+                        <li><strong>Navegar pelas Questões:</strong> Utilizar o menu lateral para selecionar a questão que deseja visualizar ou responder.</li>
+                        <li><strong>Assistir ao Vídeo da Questão:</strong> O vídeo correspondente à questão selecionada será reproduzido automaticamente. Quaisquer imagens de overlay configuradas pelo criador da prova serão exibidas no momento apropriado sobre o vídeo.</li>
+                        <li><strong>Utilizar Controles de Vídeo:</strong>
+                            <ul class="list-disc list-inside space-y-0.5 ml-6 text-gray-600 text-sm">
+                                <li>Pausar ou retomar a reprodução do vídeo.</li>
+                                <li>Ajustar o volume ou silenciar o áudio.</li>
+                                <li>Expandir o vídeo para tela cheia para melhor visualização.</li>
+                                <li>Utilizar os botões "INÍCIO" ou "ALTERNATIVAS" (A-E) para navegar rapidamente para partes específicas do vídeo da questão.</li>
+                                <li>Ajustar a "VELOCIDADE" de reprodução do vídeo (lento, normal, rápido) conforme a necessidade.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Observar Feedback Visual:</strong> Prestar atenção às notificações na tela que indicam qual parte da questão está sendo exibida (enunciado ou alternativas) e a velocidade de reprodução atual.</li>
+                    </ol>
+                    <div class="download-button mt-4 opacity-50 cursor-not-allowed">
+                        <i class="fas fa-download"></i> Aplicador AvaLIBRAS - Em Desenvolvimento
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Software em fase final de desenvolvimento</p>
+                </article>
+            </section>
+
+            <section id="contribuicoes" class="content-section bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-[#06437e] mb-3">Contribuições e Impacto Esperado</h2>
+                <p class="text-sm">
+                    Espera-se que o sistema de videoprovas não apenas promova a equidade na avaliação, mas também empodere os estudantes surdos, oferecendo-lhes a oportunidade de se destacarem em sua própria língua. Além disso, esta pesquisa pretende fornecer subsídios teóricos e práticos para a formulação de políticas e práticas pedagógicas verdadeiramente inclusivas. O resultado deste trabalho será um software acessível e eficaz, que abrirá novos horizontes para a avaliação em Libras e contribuirá para a construção de uma educação mais justa e igualitária.
+                </p>
+            </section>
+
+            <section id="autor" class="content-section bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold text-[#06437e] mb-3">Autor</h2>
+                <p class="mb-1 text-sm"><strong>Flávio Jussiê Ribeiro Fernandes</strong></p>
+                <div class="text-gray-700 text-sm">
+                    <h4 class="font-semibold mt-2">Orientação:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Orientador: Prof. Dr. Leonardo Oliveira Moreira (UFC)</li>
+                        <li>Coorientador: Prof. Dr. Windson Viana de Carvalho (UFC)</li>
+                    </ul>
+                    <h4 class="font-semibold mt-3">Programa:</h4>
+                    <p>Programa de Pós-Graduação em Tecnologia Educacional (PPGTE)</p>
+                    <p>Instituto Universidade Virtual</p>
+                    <p>Universidade Federal do Ceará (UFC)</p>
+                    <p class="mt-2"><strong>Ano de Defesa (previsto):</strong> 2025</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-r from-[#06437e] to-[#45a2de] text-white text-center py-3 mt-auto">
+        <p class="text-xs">&copy; 2025 AvaLIBRAS - Projeto de Mestrado (Prof. Flávio Jussiê) - Versão Beta</p>
+        <p class="text-xs mt-0.5">Desenvolvido com base na pesquisa de mestrado de Flávio Jussiê Ribeiro Fernandes, incorporando conceitos e funcionalidades do Criador AvaLIBRAS e Aplicador AvaLIBRAS.</p>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Voltar ao Topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Script para navegação suave e ativação de links na TOC
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('#TableOfContents a[href^="#"]');
+            const sections = [];
+            links.forEach(link => {
+                const section = document.querySelector(link.getAttribute('href'));
+                if (section) {
+                    sections.push(section);
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        // Remove active class from all links
+                        links.forEach(l => l.classList.remove('active'));
+                        // Add active class to the clicked link
+                        this.classList.add('active');
+                    });
+                }
+            });
+
+            // Highlight TOC link on scroll
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const tocLink = document.querySelector(`#TableOfContents a[href="#${id}"]`);
+                    if (tocLink) {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                            document.querySelectorAll('#TableOfContents a').forEach(l => l.classList.remove('active'));
+                            tocLink.classList.add('active');
+                        }
+                    }
+                });
+            }, { threshold: 0.5, rootMargin: "0px 0px -50% 0px" }); // Adjust rootMargin to trigger highlight sooner/later
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Script para o botão "Voltar ao Topo"
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
+        // Função simplificada para mostrar/ocultar botão
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 300) {
+                scrollToTopBtn.style.display = "block";
+                scrollToTopBtn.style.opacity = "1";
+            } else {
+                scrollToTopBtn.style.opacity = "0";
+                setTimeout(() => {
+                    if (scrollToTopBtn.style.opacity === "0") {
+                        scrollToTopBtn.style.display = "none";
+                    }
+                }, 300);
+            }
+        });
+
+        // Função para voltar ao topo
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+    </script>
+
+</body>
+</html>

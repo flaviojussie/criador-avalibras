@@ -1,4 +1,4 @@
-# Manual Técnico Completo do AvaLIBRAS v2.0.0
+# Manual Técnico Completo do AvaLIBRAS (Versão Beta)
 
 **"Esquema Elétrico" do Criador AvaLIBRAS para Manutenção e Desenvolvimento**
 
@@ -24,7 +24,7 @@
 
 ### Arquitetura Híbrida Electron + React
 
-O **Criador AvaLIBRAS v2.0.0** é um editor de videoprovas educacionais para criação de avaliações com vídeo em LIBRAS (Língua Brasileira de Sinais).
+O **Criador AvaLIBRAS (Versão Beta)** é um editor de videoprovas educacionais para criação de avaliações com vídeo em LIBRAS (Língua Brasileira de Sinais).
 
 **Nota**: O sistema AvaLIBRAS é composto por duas aplicações planejadas:
 - ✅ **Criador AvaLIBRAS** (implementado): Editor para professores criarem provas
@@ -505,5 +505,5 @@ Este manual técnico é um documento vivo e deve ser atualizado conforme a aplic
 ---
 
 *Última atualização: Outubro 2025*
-*Versão: 2.0.0*
+*Versão: Beta*
 *Aplicação: AvaLIBRAS*

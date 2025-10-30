@@ -1,6 +1,6 @@
-# Documentação da API v2.0.0 (Criador AvaLIBRAS)
+# Documentação da API (Criador AvaLIBRAS - Versão Beta)
 
-Este documento detalha as APIs expostas pelo **Criador AvaLIBRAS v2.0.0**, focando na interface `electronAPI` disponível no processo de renderização (frontend React) e nos principais handlers IPC (Inter-Process Communication) gerenciados pelo processo principal do Electron (`main.js`).
+Este documento detalha as APIs expostas pelo **Criador AvaLIBRAS (Versão Beta)**, focando na interface `electronAPI` disponível no processo de renderização (frontend React) e nos principais handlers IPC (Inter-Process Communication) gerenciados pelo processo principal do Electron (`main.js`).
 
 **⚠️ IMPORTANTE**: Esta documentação cobre apenas as APIs do **Criador AvaLIBRAS**. As APIs do **Aplicador AvaLIBRAS** serão documentadas quando implementado.
 
@@ -548,6 +548,6 @@ if (result.success) {
 
 ---
 
-*Versão: 2.0.0*
+*Versão: Beta*
 *Última atualização: Outubro 2025*
 *Aplicação: AvaLIBRAS*

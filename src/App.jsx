@@ -521,7 +521,7 @@ const App = () => {
     const handleOpenDocumentation = useCallback(() => {
         // Abre a documentação no navegador padrão
         if (window.electronAPI?.shell?.openExternal) {
-            window.electronAPI.shell.openExternal('https://github.com/flaviojussie/avalibras/blob/main/docs');
+            window.electronAPI.shell.openExternal('https://github.com/flaviojussie/criador-avalibras/blob/main/docs');
             showNotification('Abrindo documentação...', 'info');
         } else {
             showNotification('API Electron não disponível', 'error');
@@ -535,7 +535,7 @@ const App = () => {
     const handleReportIssue = useCallback(() => {
         // Abre a página de issues do GitHub no navegador padrão
         if (window.electronAPI?.shell?.openExternal) {
-            window.electronAPI.shell.openExternal('https://github.com/flaviojussie/avalibras/issues');
+            window.electronAPI.shell.openExternal('https://github.com/flaviojussie/criador-avalibras/issues');
             showNotification('Abrindo página de problemas...', 'info');
         } else {
             showNotification('API Electron não disponível', 'error');

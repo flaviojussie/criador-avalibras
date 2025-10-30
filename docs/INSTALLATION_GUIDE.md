@@ -1,4 +1,4 @@
-# Guia de Instalação e Configuração do Criador AvaLIBRAS v2.0.0
+# Guia de Instalação e Configuração do Criador AvaLIBRAS (Versão Beta)
 
 Este guia oferece instruções detalhadas para instalar e configurar o **Criador AvaLIBRAS** (editor de videoprovas) tanto para usuários finais quanto para desenvolvedores que desejam contribuir com o projeto.
 
@@ -31,7 +31,7 @@ Este guia oferece instruções detalhadas para instalar e configurar o **Criador
 #### **Método 1: Instalador Oficial (Recomendado)**
 
 1.  **Download**:
-    *   Baixe o instalador `Avalibras-Setup-2.0.0.exe` da página de lançamentos oficial
+    *   Baixe o instalador `Avalibras-Setup-Beta.exe` da página de lançamentos oficial
     *   Verifique a integridade do arquivo usando o checksum fornecido
 
 2.  **Executar o Instalador**:
@@ -54,7 +54,7 @@ Este guia oferece instruções detalhadas para instalar e configurar o **Criador
 
 #### **Método 2: Portátil (Sem Instalação)**
 
-1.  **Download**: Baixe o arquivo `Avalibras-2.0.0-win32-x64.zip`
+1.  **Download**: Baixe o arquivo `Avalibras-Beta-win32-x64.zip`
 2.  **Extração**: Extraia o conteúdo para uma pasta de sua escolha
 3.  **Execução**: Execute `Avalibras.exe` diretamente da pasta extraída
 
@@ -64,23 +64,23 @@ Este guia oferece instruções detalhadas para instalar e configurar o **Criador
 
 1.  **Download**:
     ```bash
-    wget https://github.com/seu-repositorio/avalibras/releases/download/v2.0.0/Avalibras-2.0.0.AppImage
+    wget https://github.com/flaviojussie/criador-avalibras/releases/download/Avalibras-Beta.AppImage
     ```
 
 2.  **Permissões de Execução**:
     ```bash
-    chmod +x Avalibras-2.0.0.AppImage
+    chmod +x Avalibras-Beta.AppImage
     ```
 
 3.  **Execução**:
     ```bash
-    ./Avalibras-2.0.0.AppImage
+    Avalibras-Beta.AppImage
     ```
 
 4.  **Integração com o Sistema (Opcional)**:
     ```bash
     # Criar link simbólico em /usr/local/bin
-    sudo ln -s $(pwd)/Avalibras-2.0.0.AppImage /usr/local/bin/avalibras
+    sudo ln -s $(pwd)/Avalibras-Beta.AppImage /usr/local/bin/avalibras
 
     # Criar entrada no menu de aplicativos
     sudo cp avalibras.desktop /usr/share/applications/
@@ -150,7 +150,7 @@ Após a instalação, verifique se a aplicação está funcionando corretamente:
 
 ```bash
 # Clonar o repositório
-git clone https://github.com/seu-usuario/avalibras.git
+git clone https://github.com/flaviojussie/criador-avalibras.git
 cd avalibras
 
 # Verificar a branch correta
@@ -497,6 +497,6 @@ Veja `CONTRIBUTING.md` no repositório para detalhes sobre como contribuir com o
 
 ---
 
-*Versão: 2.0.0*
+*Versão: Beta*
 *Última atualização: Outubro 2025*
 *Aplicação: AvaLIBRAS*

@@ -580,7 +580,7 @@ function createNativeMenu() {
             dialog.showMessageBox(mainWindow, {
               type: 'info',
               title: 'AvaLIBRAS',
-              message: 'AvaLIBRAS - Editor de Videoprovas',
+              message: 'Criador AvaLIBRAS',
               detail: 'Versão 2.0.0\n\nSistema de criação de avaliações educacionais com vídeo para LIBRAS.\n\n© 2024 - Todos os direitos reservados',
               buttons: ['OK']
             });

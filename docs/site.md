@@ -11,7 +11,7 @@ Conteúdo
 
 Sobre o Projeto
 
-Este projeto de produto educacional, atualmente em fase final de desenvolvimento e como parte central da dissertação de Mestrado Profissional em Tecnologia Educacional da Universidade Federal do Ceará (UFC), aborda a busca por uma avaliação justa e inclusiva para estudantes surdos na educação básica. A pesquisa se concentra na escassez de ferramentas avaliativas que respeitem a Língua Brasileira de Sinais (Libras), a língua natural desses estudantes.
+Este projeto de produto educacional, que se encontra em sua versão Beta de distribuição e faz parte da dissertação de Mestrado Profissional em Tecnologia Educacional da Universidade Federal do Ceará (UFC), aborda a busca por uma avaliação justa e inclusiva para estudantes surdos na educação básica. A pesquisa se concentra na escassez de ferramentas avaliativas que respeitem a Língua Brasileira de Sinais (Libras), a língua natural desses estudantes.
 
 O objetivo principal é desenvolver e avaliar um sistema de videoprovas que ofereça acesso às questões tanto na versão escrita tradicional quanto em Libras, promovendo acessibilidade, inclusão e equidade na avaliação da aprendizagem. A investigação explora o contexto histórico e legal da educação de surdos, a importância da Libras e o potencial das tecnologias assistivas. Espera-se que este trabalho contribua com subsídios teóricos e práticos para políticas e práticas pedagógicas inclusivas, resultando em um software acessível e eficaz para a avaliação em Libras.
 Palavras-chave: Avaliação educacional Estudantes surdos Libras Videoprovas Inclusão
@@ -118,7 +118,7 @@ Universidade Federal do Ceará (UFC)
 
 Ano de Defesa (previsto): 2025
 
-© 2025 AvaLIBRAS - Projeto de Mestrado (Prof. Flávio Jussiê) - Versão 1.0
+© 2025 AvaLIBRAS - Projeto de Mestrado (Prof. Flávio Jussiê) - Versão Beta
 
 Desenvolvido com base na pesquisa de mestrado de Flávio Jussiê Ribeiro Fernandes, incorporando conceitos e funcionalidades do Criador AvaLIBRAS e Aplicador AvaLIBRAS.
 

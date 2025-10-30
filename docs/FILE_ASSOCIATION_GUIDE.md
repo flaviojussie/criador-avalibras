@@ -1,7 +1,7 @@
 # 📁 Guia de Associação de Arquivos e Menu de Contexto - AvaLIBRAS
 
 **Data:** 30 de Outubro de 2025
-**Versão:** AvaLIBRAS v2.0.0
+**Versão:** AvaLIBRAS (Beta)
 **Status:** ✅ IMPLEMENTADO
 
 ---

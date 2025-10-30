@@ -117,7 +117,7 @@
     "publish": {
       "provider": "github",
       "owner": "flaviojussie",
-      "repo": "https://github.com/AvaLIBRAS/AvaLIBRAS-Editor"
+      "repo": "https://github.com/flaviojussie/criador-avalibras"
     }
   }
 }
