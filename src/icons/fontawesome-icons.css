@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Font Awesome 7 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("sources/fontawesome/otfs/Font Awesome 7 Free-Regular-400.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Font Awesome 7 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("sources/fontawesome/otfs/Font Awesome 7 Free-Solid-900.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Font Awesome 7 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("sources/fontawesome/otfs/Font Awesome 7 Brands-Regular-400.otf") format("opentype"); }
+
+.fa,
+.fas,
+.far,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1; }
+
+.fa-solid,
+.fas {
+  font-family: 'Font Awesome 7 Free';
+  font-weight: 900; }
+
+.fa-regular,
+.far {
+  font-family: 'Font Awesome 7 Free';
+  font-weight: 400; }
+
+.fa-brands,
+.fab {
+    font-family: 'Font Awesome 7 Brands';
+    font-weight: 400;
+}

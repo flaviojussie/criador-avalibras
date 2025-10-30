@@ -1,0 +1,123 @@
+{
+  "name": "avalibras-react",
+  "version": "1.0.0",
+  "description": "AvaLIBRAS - Sistema de criação de videoprovas",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "author": {
+  "name": "Flávio Jussiê",
+  "email": "flavio.jussie@professor.ufc.br"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "format:check": "prettier --check . --ignore-path .gitignore",
+    "electron": "ELECTRON_IS_DEV=false electron .",
+    "electron-dev": "ELECTRON_IS_DEV=true electron .",
+    "dev:electron": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && npm run electron-dev\"",
+    "start": "npm run build && npm run electron",
+    "start:dev": "ELECTRON_IS_DEV=true npm run build && npm run electron-dev",
+    "build-electron": "npm run build && electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
+    "adm-zip": "^0.5.16",
+    "archiver": "^7.0.1",
+    "electron-updater": "^6.6.2",
+    "fluent-ffmpeg": "^2.1.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^7.6.0",
+    "electron": "^38.2.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.1.11",
+    "wait-on": "^7.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "icon": "public/source/img/icone.png",
+    "files": [
+      "build/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "public/source/img/icone.png",
+      "category": "Education"
+    },
+    "fileAssociations": [
+      {
+        "ext": "avaprojet",
+        "name": "Projeto AvaLIBRAS",
+        "description": "Arquivo de Projeto do AvaLIBRAS",
+        "role": "Editor",
+        "icon": "assets/avaprojet.ico"
+      },
+      {
+        "ext": "ava",
+        "name": "Prova AvaLIBRAS",
+        "description": "Arquivo de Prova Completa do AvaLIBRAS",
+        "role": "Viewer",
+        "icon": "assets/ava.ico"
+      },
+      {
+        "ext": "avaquest",
+        "name": "Questão AvaLIBRAS",
+        "description": "Arquivo de Questão do AvaLIBRAS",
+        "role": "Editor",
+        "icon": "assets/avaquest.ico"
+      }
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "flaviojussie",
+      "repo": "https://github.com/AvaLIBRAS/AvaLIBRAS-Editor"
+    }
+  }
+}
