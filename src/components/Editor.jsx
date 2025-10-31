@@ -23,10 +23,6 @@ const Editor = ({
     removeOverlayFromQuestion
 }) => {
     const [isDragOver, setIsDragOver] = useState(false);
-    const [playheadPosition, setPlayheadPosition] = useState(0);
-    const [progressPosition, setProgressPosition] = useState(0);
-
-    // Memoizar o ID do vídeo para evitar re-renders desnecessários - Otimizado
     const videoId = useMemo(() => selectedQuestion?.video || null, [selectedQuestion?.video]);
 
     // Handle marker time updates
@@ -43,8 +39,15 @@ const Editor = ({
         });
     }, [selectedQuestion, questionsManager]);
 
-    // Inicializar o video editor hook
-    const videoEditor = useVideoEditor(videoPlayerRef, timelineRef, questionsManager, selectedQuestion, handleMarkerTimeUpdate);
+    const {
+        playheadRef,
+        progressRef,
+        selectionAreaRef,
+        timelineTrackRef,
+        playheadPosition,
+        progressPosition,
+        ...videoEditor
+    } = useVideoEditor(videoPlayerRef, questionsManager, selectedQuestion, handleMarkerTimeUpdate);
 
     // Sync overlay data with the overlay manager when the selected question changes
     const { clearOverlays, addOverlay } = overlayManager;
@@ -60,10 +63,8 @@ const Editor = ({
 
     // Update video player reference when selected question changes
     useEffect(() => {
-        // Reset positions if no video is available
+        // A lógica de reset agora está dentro do useVideoEditor
         if (!videoId) {
-            setPlayheadPosition(0);
-            setProgressPosition(0);
             console.log('Editor: 📹 Nenhum vídeo disponível, resetando posições.');
             return;
         }
@@ -209,14 +210,9 @@ const Editor = ({
     // Handle video player events for overlay state
     const handleVideoTimeUpdate = useCallback(() => {
         if (videoPlayerRef.current) {
-            const { currentTime, duration } = videoPlayerRef.current;
+            // A atualização da posição do playhead agora é gerenciada pelo useVideoEditor.
+            // Mantemos esta função para o overlayManager.
             overlayManager.updateVideoState(videoPlayerRef.current);
-
-            if (duration > 0) {
-                const position = (currentTime / duration) * 100;
-                setPlayheadPosition(position);
-                setProgressPosition(position);
-            }
         }
     }, [overlayManager, videoPlayerRef]);
 
@@ -434,6 +430,11 @@ const Editor = ({
                                 playheadPosition={playheadPosition}
                                 progressPosition={progressPosition}
                                 onUpdateMarkerTime={handleMarkerTimeUpdate}
+                                // Pass down the new refs
+                                playheadRef={playheadRef}
+                                progressRef={progressRef}
+                                selectionAreaRef={selectionAreaRef}
+                                timelineTrackRef={timelineTrackRef}
                             />
                         </>
             {videoEditor.isCutting && (

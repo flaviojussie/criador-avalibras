@@ -4,8 +4,14 @@ const fs = require('fs');
 const fsPromises = require('fs').promises;
 const { TEMP_PATHS, logger, createTempDir } = require('./utils');
 const ffmpeg = require('fluent-ffmpeg');
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
-const ffprobePath = require('@ffprobe-installer/ffprobe').path;
+let ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+let ffprobePath = require('@ffprobe-installer/ffprobe').path;
+
+// Corrige o caminho do ffmpeg para o ambiente de produção (buildado)
+if (process.env.ELECTRON_IS_DEV === 'false') {
+  ffmpegPath = ffmpegPath.replace('app.asar', 'app.asar.unpacked');
+  ffprobePath = ffprobePath.replace('app.asar', 'app.asar.unpacked');
+}
 
 // Configura os caminhos para o ffmpeg e ffprobe
 ffmpeg.setFfmpegPath(ffmpegPath);

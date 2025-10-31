@@ -1,9 +1,9 @@
 {
-  "name": "avalibras-react",
-  "version": "1.0.0",
-  "description": "AvaLIBRAS - Sistema de criação de videoprovas",
+  "name": "criador-avalibras",
+  "version": "1.0.0-beta",
+  "description": "AvaLIBRAS - Módulo de criação de videoprovas",
   "main": "electron/main.js",
-  "homepage": "./",
+  "homepage": "https://avalibras.github.io",
   "author": {
   "name": "Flávio Jussiê",
   "email": "flavio.jussie@professor.ufc.br"
@@ -69,7 +69,8 @@
     ]
   },
   "build": {
-    "icon": "public/source/img/icone.png",
+    "productName": "Criador AvaLIBRAS",
+    "icon": "public/source/img/icone.ico",
     "files": [
       "build/**/*",
       "electron/**/*"

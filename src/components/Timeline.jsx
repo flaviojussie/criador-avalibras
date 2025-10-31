@@ -100,16 +100,17 @@ const TimelineRuler = React.memo(({ duration = 0 }) => {
     );
 });
 
-const TimelineTrackComponent = ({ children, isMainTrack = false, hint }) => {
+const TimelineTrackComponent = forwardRef(({ children, isMainTrack = false, hint }, ref) => {
     return (
-        <div className={`timeline-track relative rounded-[6px] shadow-inner ${isMainTrack ? 'h-12 bg-[var(--surface-primary)]' : 'h-10 bg-[var(--surface-tertiary)]'} group`}>
+        <div ref={ref} className={`timeline-track relative rounded-[6px] shadow-inner ${isMainTrack ? 'h-12 bg-[var(--surface-primary)]' : 'h-10 bg-[var(--surface-tertiary)]'} group`}>
             {children}
             <div className="absolute inset-0 flex items-center justify-center opacity-50 group-hover:opacity-0 transition-opacity text-xs text-[var(--text-tertiary)] pointer-events-none">
                 {hint}
             </div>
         </div>
     );
-};
+});
+TimelineTrackComponent.displayName = 'TimelineTrackComponent';
 
 const TimelineTrack = React.memo(TimelineTrackComponent);
 
@@ -123,7 +124,11 @@ const Timeline = forwardRef(({
     onOpenOverlayModal, 
     playheadPosition, 
     progressPosition, 
-    onUpdateMarkerTime
+    onUpdateMarkerTime,
+    playheadRef, 
+    progressRef, 
+    selectionAreaRef, 
+    timelineTrackRef
 }, ref) => {
     const timelineRef = useRef(null);
 
@@ -155,15 +160,16 @@ const Timeline = forwardRef(({
                 <TimelineRuler duration={videoPlayerRef?.current?.duration || 0} />
 
                 <div className="space-y-1">
-                    <TimelineTrack isMainTrack={true} hint="Arraste para controlar o tempo de reprodução">
+                    <TimelineTrack ref={timelineTrackRef} isMainTrack={true} hint="Arraste para controlar o tempo de reprodução">
                         {!videoEditor.isSelectionModeActive && (
-                            <div className="timeline-progress absolute top-0 left-0 h-full bg-blue-500/20" style={{ width: `${progressPosition}%` }}></div>
+                            <div ref={progressRef} className="timeline-progress absolute top-0 left-0 h-full bg-blue-500/20" style={{ width: `${progressPosition}%` }}></div>
                         )}
                         {!videoEditor.isSelectionModeActive && (
-                            <div className="playhead absolute top-0 h-full w-0.5 bg-red-500" style={{ left: `${playheadPosition}%` }}></div>
+                            <div ref={playheadRef} className="playhead absolute top-0 h-full w-0.5 bg-red-500" style={{ left: `${playheadPosition}%` }}></div>
                         )}
                         {videoEditor.isSelectionModeActive && (
                             <div
+                                ref={selectionAreaRef}
                                 className="selection-area absolute top-0 h-full"
                                 style={{
                                     left: `${videoEditor.selectionLeft}%`,
