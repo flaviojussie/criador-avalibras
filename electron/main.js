@@ -1037,7 +1037,11 @@ function processNextInQueue() {
     isWorkerBusy = true;
     const { task, options, resolve, reject } = taskQueue.shift();
 
-    const worker = new Worker(path.join(__dirname, 'worker.js'));
+    const worker = new Worker(path.join(__dirname, 'worker.js'), {
+      workerData: {
+        isPackaged: app.isPackaged
+      }
+    });
     let workerTerminated = false; // Flag para controlar o encerramento do worker
 
     worker.on('message', (message) => {

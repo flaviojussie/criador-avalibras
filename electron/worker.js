@@ -1,4 +1,4 @@
-const { parentPort } = require('worker_threads');
+const { parentPort, workerData } = require('worker_threads');
 const path = require('path');
 const fs = require('fs');
 const fsPromises = require('fs').promises;
@@ -7,8 +7,8 @@ const ffmpeg = require('fluent-ffmpeg');
 let ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 let ffprobePath = require('@ffprobe-installer/ffprobe').path;
 
-// Corrige o caminho do ffmpeg para o ambiente de produção (buildado)
-if (process.env.ELECTRON_IS_DEV === 'false') {
+// Corrige o caminho do ffmpeg para o ambiente de produção (empacotado)
+if (workerData.isPackaged) {
   ffmpegPath = ffmpegPath.replace('app.asar', 'app.asar.unpacked');
   ffprobePath = ffprobePath.replace('app.asar', 'app.asar.unpacked');
 }
