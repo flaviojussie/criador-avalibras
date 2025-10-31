@@ -1,8 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
+import { useDraggable } from '../hooks/useDraggable';
 
 const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText = 'Confirmar', cancelText = 'Cancelar' }) => {
-    // Handle Escape key
-    useEffect(() => {
+        const { position, handleMouseDown } = useDraggable();
+    
+        const setHandleRef = useCallback(node => {
+            if (node) {
+                node.style.cursor = 'move';
+                node.addEventListener('mousedown', handleMouseDown);
+            }
+            return () => {
+                if (node) {
+                    node.removeEventListener('mousedown', handleMouseDown);
+                }
+            };
+        }, [handleMouseDown]);
+    
+        // Handle Escape key
+        useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape' && isOpen) {
                 onClose();
@@ -28,9 +43,11 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText 
             className="fixed inset-0 bg-black/50 backdrop-blur-[1px] flex items-center justify-center z-50"
             onClick={handleOverlayClick}
         >
-            <div className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-md w-full mx-4">
+            <div 
+                style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+                className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-md w-full mx-4">
                 {/* Header */}
-                <div className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
+                <div ref={setHandleRef} className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
                     <h2 className="text-sm font-semibold text-[var(--text-primary)] flex items-center gap-2">
                         <i className="fas fa-exclamation-triangle w-4 h-4 text-yellow-400"></i>
                         {title}

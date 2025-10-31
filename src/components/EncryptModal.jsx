@@ -1,6 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useDraggable } from '../hooks/useDraggable';
 
 const EncryptModal = ({ isOpen, onClose, onConfirm }) => {
+    const { position, handleMouseDown } = useDraggable();
+
+    const setHandleRef = useCallback(node => {
+        if (node) {
+            node.style.cursor = 'move';
+            node.addEventListener('mousedown', handleMouseDown);
+        }
+        return () => {
+            if (node) {
+                node.removeEventListener('mousedown', handleMouseDown);
+            }
+        };
+    }, [handleMouseDown]);
     const [usePassword, setUsePassword] = useState(false);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -46,9 +60,11 @@ const EncryptModal = ({ isOpen, onClose, onConfirm }) => {
             className="fixed inset-0 bg-black/50 backdrop-blur-[1px] flex items-center justify-center z-50"
             onClick={onClose}
         >
-            <div className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
+            <div 
+                style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+                className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
                 {/* Header */}
-                <div className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
+                <div ref={setHandleRef} className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
                     <h2 className="text-sm font-semibold text-[var(--text-primary)]">Proteger Prova</h2>
                     <button onClick={onClose} className="w-6 h-6 flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--surface-quaternary)] rounded-[3px] transition-colors" aria-label="Fechar">
                         <i className="fas fa-times w-4 h-4"></i>

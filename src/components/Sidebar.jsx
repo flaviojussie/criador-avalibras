@@ -42,8 +42,9 @@ const QuestionGrid = ({ questions, selectedQuestion, onSelect, onAddQuestion, on
     </div>
 );
 
-const QuestionDetails = ({ question, onExportQuestion }) => {
-    const alternatives = ['A', 'B', 'C', 'D', 'E'];
+const QuestionDetails = ({ question, onExportQuestion, currentProject }) => {
+    const totalAlternatives = currentProject?.totalAlternatives || 4; // Default to 4 if not set
+    const alternatives = Array.from({ length: totalAlternatives }, (_, i) => String.fromCharCode(65 + i));
     if (!question) {
         return (
             <div className="p-3 text-center text-[var(--text-tertiary)]">
@@ -277,7 +278,7 @@ const Sidebar = React.forwardRef(({ width, questions, selectedQuestion, onSelect
                 <div className="border-t-4 border-transparent hover:border-[var(--accent-primary)] cursor-row-resize h-1 transition-colors duration-200"></div>
                 <div className="flex-shrink-0 border-t border-[var(--border-color)]">
                     <h3 className="text-sm font-bold text-[var(--text-primary)] p-3 pb-0">Detalhes da Questão</h3>
-                    <QuestionDetails question={selectedQuestion} onExportQuestion={onExportQuestion} />
+                    <QuestionDetails question={selectedQuestion} onExportQuestion={onExportQuestion} currentProject={currentProject} />
                 </div>
             </aside>
 

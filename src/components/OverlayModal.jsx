@@ -1,6 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useDraggable } from '../hooks/useDraggable';
 
 const OverlayModal = ({ isOpen, onClose, selectedQuestion, questionsManager, mode, initialData }) => {
+    const { position, handleMouseDown } = useDraggable();
+
+    const setHandleRef = useCallback(node => {
+        if (node) {
+            node.style.cursor = 'move';
+            node.addEventListener('mousedown', handleMouseDown);
+        }
+        return () => {
+            if (node) {
+                node.removeEventListener('mousedown', handleMouseDown);
+            }
+        };
+    }, [handleMouseDown]);
+
     const [overlayData, setOverlayData] = useState({
         id: null,
         imagePath: '',
@@ -131,9 +146,11 @@ const OverlayModal = ({ isOpen, onClose, selectedQuestion, questionsManager, mod
             className="fixed inset-0 bg-black/50 backdrop-blur-[1px] flex items-center justify-center z-50"
             onClick={handleOverlayClick}
         >
-            <div className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-lg w-full mx-4">
+            <div 
+                style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+                className="bg-[var(--surface-primary)] border border-[var(--border-color)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-[6px] max-w-lg w-full mx-4">
                 {/* Header - estilo TitleBar */}
-                <div className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
+                <div ref={setHandleRef} className="bg-gradient-to-b from-[#3c3c3c] to-[#2d2d2d] border-b border-[var(--border-color)] px-4 py-3 flex items-center justify-between rounded-t-[6px]">
                     <h2 className="text-sm font-semibold text-[var(--text-primary)]">Adicionar Imagem</h2>
                     <button
                         onClick={onClose}
