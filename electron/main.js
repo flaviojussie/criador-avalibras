@@ -1,6 +1,6 @@
 // Forçando a recarga do arquivo para limpar o cache de build.
 // main.js
-const { app, BrowserWindow, ipcMain, dialog, shell, protocol, Menu, Tray, nativeImage } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell, protocol, Menu, nativeImage } = require('electron');
 const AdmZip = require('adm-zip');
 const { Worker } = require('worker_threads');
 const { autoUpdater } = require('electron-updater');
@@ -68,7 +68,6 @@ const devLog = (...args) => {
 };
 
 let mainWindow;
-let tray = null;
 let forceQuit = false; // Flag para controlar o fechamento forçado
 
 // Importar módulos para desktop-native
@@ -602,7 +601,6 @@ function createWindow() {
     minHeight: 600,
     frame: false,
     titleBarStyle: 'hiddenInset',
-    icon: path.join(__dirname, '../public/source/img/icone.png'),
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -613,6 +611,11 @@ function createWindow() {
     },
     show: false,
   });
+
+  // Define o ícone da janela de forma mais robusta
+  const iconPath = path.join(__dirname, `../public/source/img/icone.${process.platform === 'win32' ? 'ico' : 'png'}`);
+  const image = nativeImage.createFromPath(iconPath);
+  mainWindow.setIcon(image);
 
   // Criar menu nativo
   createNativeMenu();
@@ -1216,33 +1219,7 @@ app.whenReady().then(() => {
       autoUpdater.checkForUpdatesAndNotify();
     }
 
-    // Criar ícone na bandeja do sistema (System Tray)
-    const iconPath = path.join(__dirname, '../public/source/img/icone.png');
-    const image = nativeImage.createFromPath(iconPath);
-    tray = new Tray(image);
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: 'Abrir AvaLIBRAS',
-        click: () => {
-          mainWindow.show();
-        }
-      },
-      {
-        label: 'Verificar Atualizações',
-        click: () => {
-          autoUpdater.checkForUpdatesAndNotify();
-        }
-      },
-      { type: 'separator' },
-      {
-        label: 'Sair',
-        click: () => {
-          app.quit();
-        }
-      }
-    ]);
-    tray.setToolTip('AvaLIBRAS');
-    tray.setContextMenu(contextMenu);
+
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {

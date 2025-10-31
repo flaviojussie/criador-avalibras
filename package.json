@@ -82,15 +82,30 @@
       "category": "public.app-category.education"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "public/source/img/icone.ico"
     },
     "linux": {
       "target": [
         "AppImage",
         "deb"
       ],
-      "icon": "public/source/img/icone.png",
-      "category": "Education"
+      "icon": "assets/icons/linux",
+      "category": "Education",
+      "desktop": {
+        "Name": "Criador AvaLIBRAS",
+        "Comment": "AvaLIBRAS - Módulo de criação de videoprovas",
+        "Icon": "criador-avalibras",
+        "StartupWMClass": "Criador AvaLIBRAS",
+        "Terminal": false,
+        "Type": "Application",
+        "Categories": "Education"
+      }
+    },
+    "extraMetadata": {
+      "mainWindow": {
+        "title": "Criador AvaLIBRAS"
+      }
     },
     "fileAssociations": [
       {
@@ -98,23 +113,26 @@
         "name": "Projeto AvaLIBRAS",
         "description": "Arquivo de Projeto do AvaLIBRAS",
         "role": "Editor",
-        "icon": "assets/avaprojet.ico"
+        "icon": "avaprojet.ico"
       },
       {
         "ext": "ava",
         "name": "Prova AvaLIBRAS",
         "description": "Arquivo de Prova Completa do AvaLIBRAS",
         "role": "Viewer",
-        "icon": "assets/ava.ico"
+        "icon": "ava.ico"
       },
       {
         "ext": "avaquest",
         "name": "Questão AvaLIBRAS",
         "description": "Arquivo de Questão do AvaLIBRAS",
         "role": "Editor",
-        "icon": "assets/avaquest.ico"
+        "icon": "avaquest.ico"
       }
     ],
+    "nsis": {
+      "perMachine": true
+    },
     "publish": {
       "provider": "github",
       "owner": "flaviojussie",
